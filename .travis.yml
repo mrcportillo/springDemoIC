@@ -3,5 +3,5 @@ jdk: oraclejdk8
 script: mvn clean verify
 deploy:
   provider: gae
-  keyfile: "SpringDemoIC-577fca027e92.json.enc"
+  keyfile: "SpringDemoIC-577fca027e92.json"
   project: "springdemoic"
