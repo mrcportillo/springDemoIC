@@ -5,3 +5,4 @@ deploy:
   provider: gae
   keyfile: "SpringDemoIC-577fca027e92.json"
   project: "springdemoic"
+  skip_cleanup: true
