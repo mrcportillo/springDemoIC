@@ -7,6 +7,7 @@
     <groupId>agiles</groupId>
     <artifactId>springDemo</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -17,6 +18,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -35,6 +41,17 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <url>http://104.198.209.168/manager/text</url>
+                    <server>tomcatServer</server>
+                    <path>/springBootIC</path>
+                    <username>mrcportillo</username>
+                    <password>1392355134o</password>
+                </configuration>
             </plugin>
         </plugins>
     </build>
