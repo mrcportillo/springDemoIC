@@ -48,7 +48,6 @@
                 <configuration>
                     <url>http://104.198.209.168/manager/text</url>
                     <server>tomcatServer</server>
-                    <path>/springBootIC</path>
                     <username>mrcportillo</username>
                     <password>1392355134o</password>
                 </configuration>
