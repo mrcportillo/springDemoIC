@@ -1,8 +1,19 @@
 languaje: java
 jdk: oraclejdk8
-script: mvn tomcat7:deploy
-#deploy:
-#  provider: gae
-#  keyfile: "SpringDemoIC-577fca027e92.json"
-#  project: "springdemoic"
-#  skip_cleanup: true
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "EBKLP72B/PJmHE3+pBwQb9JV7OH72vnwA+7SA2krGWQ/YszJIXaqveaLbQw973Ns2wWNkHa+bzTlK0pmBjOPEI9/26TxXYg68P6EUi4FIyGWF3Yv4X1H/xE5HF0RBoCs3K2DLQL+1v7jgxurH+yR061chRE00fQxlvZDw3bT3OyRfP1fUY2mVQUPyADW5JNFHzJZiDxkLrJiQ++x95oAuwvD4ZOaCEimzUg9rvNUj9Wa7FZRuZZPcCcL4Hit9PtSHT6NBelscKcmNXYJlZztGhgY5poqquXDbOLCqFOJKK097Q3u5/zB3yD3YfNX+oYlUj4UnFJKU0m50eHULxXICAuOOFNuxFlD/bdPw8LimovgIW49uqdeORlhd+vuq8qf470nqTtAivpOPr9cTcANjTl7e8Pu8BjI2FmNMjade63n0BfwgBvoo90wVRRJejBXJ6MDouVRsOq4HzlZi+fjCiuHK6HxrnnltY0ZxQ7niJ2kGsVpeGTtbaKTciIGKDMYzDmB/BWv+VqTCEjEFo33au4DNn8G2kPDGR8Ivv+n5rUnluIXHGO4fVF7bnK6XzTkLOdGC/lpSqYATzppsR0FrNnc5yWJ6+QsGwnzZno6T3U79MZrJNqmGeVxMzXm/a0ESFCw0CJjb7kFBMk2/I/J4ZDcD/mE10mBV5ZM1WnGTeM="
+
+before_install:
+      - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+
+addons:
+  coverity_scan:
+    project:
+      name: "mrcportillo/springDemoIC"
+    notification_email: marcossportillo@gmail.com
+    build_command_prepend: mvn clean
+    build_command: mvn tomcat7:deploy
+    branch_pattern: master
