@@ -1,20 +1,12 @@
 languaje: java
 jdk: oraclejdk8
 script: mvn clean verify
-env:
-  global:
-   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-   #   via the "travis encrypt" command using the project repo's public key
-   - secure: "TxeJKNrBao0gtJD6ZPyJ+l7gIyssGXCdV3Is+PwMhbPRHN24Bn/dn6CgDaBB1FsCFnTLsBIlTV3xt7nqQvSS6iirC7KzzosmxR2kj+2CwLX4Yv9Yo3bNYYq1GwF8SvIt0+uMuFpgzIQpWFX4CVPyrVDDnranwbafcKso5BxPX2lWnBOdi3brAFhQpNSACNCNCVhn6SkuskkKqVd3yT5U4DRnwKpyU68h6VTXUYAgKixCBs7LSQjQr6rB5z8u4/RoJOdkn5Kgcv1n5JSnpg9aR29xGS4rtE5XNpZPeu+VURrhibe0rupntFFY4NlGPcYrZnBq99J6uQvrUAlmYVzTCY7qTUU8xipld5a2TbUlKRXt0q3hffiayeRvlhzbt80cPpiQ6gnB/aQrljOGmgubEb+dQn0Sy+AbH7WUgDfoBveJeezSfLZ3gD3Xh4Oxj1dwJdPq3X95p6nwBT1ozp3LoH9v5alJqIYBNhG+U16OjKjZ7LHb6ie0YJwzfDkGsYDestVPi+lEX5kC8cIVGUF8Q3cx8O3lMaiCIZp2WXT98K5Pz52N7KXFqtz02Ns9cLpho3vxOHf0OU+mhk8lJlMWqZePOaLjXHh9DwjNIabysVdX6t6V1TPJwnoxoIYcfkB/iSRcbbbmEQTgPgLtGd1nb4nYuompHI/TGrREm1We2Qk="
-
-before_install:
-      - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
 
 addons:
-  coverity_scan:
-    project:
-      name: "mrcportillo/GdtFollows"
-    notification_email: marcossportillo@gmail.com
-    build_command_prepend: mvn clean
-    build_command: mvn tomcat7:deploy
-    branch_pattern: master
+  sonarqube:
+    organization: "1-2:master"
+    token:
+    secure: JVGWI0y1d7D7qFeCmaG8NXbVuzBr2V6kf4uIE7Ror7QUWfnNeQUOdvNRFrOs5P+KGAt+wiPT4gy5Hw2jjBSLN0TysqUYGKVwW7sWitl03mUYOBrWMDYq6Y+DaA268NC9FQwozMEWcF3R+0Niep508qyspEEIMc3jHOKuBJ9MU7BeOi0pNWkBhI+qWXUHJsMSXjkJPMy6cZ+e4GaUXba7xgTct8NK2eYrgvKuj24owIQEUVXvK7ku6bjO8+V/wY8C+4NAK4K+0ZMrRwUTRy2zfx8DF7fkVanXwA8fQCJhzXvqwph+KVaQcI4UsDigP1PO87THTxZ+V1xbz2Bzjon5QUYsFezATXjPIUjeXYFymUFmYbwmU2KqFWBP0q7oIimYX0wooRrWqmRDOKgX/y9J6BnaSnlgSTWibgpsYcqUfj4E/zZEHHjbIPRcN+Sw4Ui7EfKdmq3u0rd1rqpb1xJqmX+95mMtuwDjWcaEafnOl+8bqnGqT9AH47pOPWuJayi0ftuvok7GHCerLIh9Ypvgd1a/4XYl7IF1m548ZMbNzozk6ifpB10AgrlZmidLOaa+kmbI84S7NL9AiLGdgvFyVuUg0fXqY6QrVmk4pUfhHrkDm9o+CSRVzdctpOdTqZsKbNtxCyrNqeltkvwCXCb/TX4R/qczvRNzLGQzgWGZ5H0=
+script:
+  # other script steps might be done before running the actual SonarQube analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
