@@ -1,3 +1,4 @@
+/*
 package hello;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -15,9 +16,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 
+*/
 /**
  * Created by mrc on 15/04/17.
- */
+ *//*
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -34,3 +37,4 @@ public class HelloControllerTest {
                 .andExpect(content().string(equalTo("hi you")));
     }
 }
+*/
