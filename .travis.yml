@@ -10,5 +10,4 @@ addons:
       secure: JVGWI0y1d7D7qFeCmaG8NXbVuzBr2V6kf4uIE7Ror7QUWfnNeQUOdvNRFrOs5P+KGAt+wiPT4gy5Hw2jjBSLN0TysqUYGKVwW7sWitl03mUYOBrWMDYq6Y+DaA268NC9FQwozMEWcF3R+0Niep508qyspEEIMc3jHOKuBJ9MU7BeOi0pNWkBhI+qWXUHJsMSXjkJPMy6cZ+e4GaUXba7xgTct8NK2eYrgvKuj24owIQEUVXvK7ku6bjO8+V/wY8C+4NAK4K+0ZMrRwUTRy2zfx8DF7fkVanXwA8fQCJhzXvqwph+KVaQcI4UsDigP1PO87THTxZ+V1xbz2Bzjon5QUYsFezATXjPIUjeXYFymUFmYbwmU2KqFWBP0q7oIimYX0wooRrWqmRDOKgX/y9J6BnaSnlgSTWibgpsYcqUfj4E/zZEHHjbIPRcN+Sw4Ui7EfKdmq3u0rd1rqpb1xJqmX+95mMtuwDjWcaEafnOl+8bqnGqT9AH47pOPWuJayi0ftuvok7GHCerLIh9Ypvgd1a/4XYl7IF1m548ZMbNzozk6ifpB10AgrlZmidLOaa+kmbI84S7NL9AiLGdgvFyVuUg0fXqY6QrVmk4pUfhHrkDm9o+CSRVzdctpOdTqZsKbNtxCyrNqeltkvwCXCb/TX4R/qczvRNzLGQzgWGZ5H0=
 script:
   # other script steps might be done before running the actual SonarQube analysis
-  - sonar-scanner
-  - mvn tomcat7:deploy
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar  tomcat7:deploy
