@@ -1,4 +1,3 @@
-/*
 package hello;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -15,11 +14,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-
-*/
-/**
+/*
  * Created by mrc on 15/04/17.
- *//*
+ */
 
 
 @RunWith(SpringRunner.class)
@@ -31,10 +28,17 @@ public class HelloControllerTest {
     private MockMvc mvc;
 
     @Test
-    public void getHello() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
+    public void getHelloDefaultTest() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/greeting?").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("hi you")));
+                .andExpect(content().json("{\"id\":2,\"content\":\"Hello, World!\"}"));
+    }
+
+    @Test
+    public void getHelloTest() throws Exception {
+
+        mvc.perform(MockMvcRequestBuilders.get("/greeting?name=Jose").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json("{\"id\":1,\"content\":\"Hello, Jose!\"}"));
     }
 }
-*/
