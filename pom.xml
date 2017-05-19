@@ -63,12 +63,12 @@
                 <version>2.7</version>
                 <configuration>
                     <instrumentation>
-                    <ignores>
-                        <ignore>*</ignore>
-                    </ignores>
-                    <excludes>
-                      <exclude>*.class</exclude>
-                    </excludes>
+                        <ignores>
+                            <ignore>hello.Application</ignore>
+                        </ignores>
+                        <excludes>
+                            <exclude>hello/Application.class</exclude>
+                        </excludes>
                     </instrumentation>
                     <check>
                         <lineRate>80</lineRate>
@@ -86,10 +86,10 @@
                 <configuration>
                     <instrumentation>
                         <ignores>
-                            <ignore>*</ignore>
+                            <ignore>hello.Application</ignore>
                         </ignores>
                         <excludes>
-                            <exclude>*.class</exclude>
+                            <exclude>hello/Application.class</exclude>
                         </excludes>
                     </instrumentation>
                     <check>
