@@ -1,6 +1,5 @@
 package hello;
 
-import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -14,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.ContentResultMatchers;
 
 import java.time.LocalTime;
 
@@ -38,20 +36,27 @@ public class HelloControllerTest {
                 .andExpect(content().json("{\"id\":3,\"content\":\"Hello, World!\"}"));
     }
 
-//    @Test
-//    public void getHelloTest() throws Exception {
-//
-//        mvc.perform(MockMvcRequestBuilders.get("/greeting?name=Jose").accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andExpect(content().json("{\"id\":2,\"content\":\"Hello, Jose!\"}"));
-//    }
-//
-//    @Test
-//    public void getLandingTime() throws Exception {
-//        mvc.perform(MockMvcRequestBuilders.get("/timeGreeting").accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andExpect(getJsonContent());
-//    }
+    @Test
+    public void getHelloTest() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/greeting?name=Jose").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json("{\"id\":2,\"content\":\"Hello, Jose!\"}"));
+    }
+
+    @Test
+    public void getLandingTime() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/timeGreeting").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(getJsonContent());
+    }
+
+    @Test
+    public void getError() throws Exception{
+        mvc.perform(MockMvcRequestBuilders.get("/badUrl").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("Bad url"));
+
+    }
 
     private ResultMatcher getJsonContent() {
         if (LocalTime.now().isAfter(LocalTime.of(12, 0))) {

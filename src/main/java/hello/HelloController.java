@@ -1,6 +1,8 @@
 package hello;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,5 +31,11 @@ public class HelloController {
         } else {
             return new Greeting(counter.incrementAndGet(), String.format(template, "morning"));
         }
+    }
+
+    @RequestMapping("/*")
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public String error() {
+        return "Bad url";
     }
 }
