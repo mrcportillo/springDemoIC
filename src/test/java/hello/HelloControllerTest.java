@@ -36,7 +36,7 @@ public class HelloControllerTest {
                 .andExpect(content().json("{\"id\":3,\"content\":\"Hello, World!\"}"));
     }
 
-    @Test
+/*    @Test
     public void getHelloTest() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/greeting?name=Jose").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -56,7 +56,7 @@ public class HelloControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string("Bad url"));
 
-    }
+    }*/
 
     private ResultMatcher getJsonContent() {
         if (LocalTime.now().isAfter(LocalTime.of(12, 0))) {
