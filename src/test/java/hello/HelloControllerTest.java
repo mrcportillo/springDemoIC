@@ -29,7 +29,7 @@ public class HelloControllerTest {
     @Autowired
     private MockMvc mvc;
 
-/*    @Test
+    @Test
     public void getHelloDefaultTest() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/greeting?").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -48,7 +48,7 @@ public class HelloControllerTest {
         mvc.perform(MockMvcRequestBuilders.get("/timeGreeting").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(getJsonContent());
-    }*/
+    }
 
     @Test
     public void getError() throws Exception{
