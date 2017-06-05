@@ -17,6 +17,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class HelloController {
 
     private static final String template = "Hello, %s!";
+    private static String variableQueNoHaceNada = "nada";
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/greeting")
@@ -38,4 +39,13 @@ public class HelloController {
     public String error() {
         return "Bad url";
     }
+//
+//    @RequestMapping("/pathQueNoHaceNada")
+//    public void noHacerNada() {
+//        if ("nada".equalsIgnoreCase(variableQueNoHaceNada)) {
+//            System.out.println("no hacer nada 1");
+//        } else {
+//            System.out.println("no hacer nada 2");
+//        }
+//    }
 }
