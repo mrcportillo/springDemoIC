@@ -39,13 +39,13 @@ public class HelloController {
     public String error() {
         return "Bad url";
     }
-//
-//    @RequestMapping("/pathQueNoHaceNada")
-//    public void noHacerNada() {
-//        if ("nada".equalsIgnoreCase(variableQueNoHaceNada)) {
-//            System.out.println("no hacer nada 1");
-//        } else {
-//            System.out.println("no hacer nada 2");
-//        }
-//    }
+
+    @RequestMapping("/pathQueNoHaceNada")
+    public void noHacerNada() {
+        if ("nada".equalsIgnoreCase(variableQueNoHaceNada)) {
+            System.out.println("no hacer nada 1");
+        } else {
+            System.out.println("no hacer nada 2");
+        }
+    }
 }
